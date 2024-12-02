@@ -13,7 +13,7 @@ float sensorDistanceRead(float servoAngle_) {
     delay(50);  // servo movement small pause
   }
 
-  float referenceMv = 1000; // 1V for the WeMos D1
+  float referenceMv = 1240; // after testing the sensor, 1240 mV seem to fit better
 
   // The distance in cm are calculated through the analog pin and the getsensorDistance function:
   float val = analogRead(sensorPin);
@@ -27,7 +27,7 @@ float sensorDistanceRead(float servoAngle_) {
   }
   delay(50); //  pause
   float mV = (val * referenceMv) / 1023;   // using the voltage reference and the resolution of A0
-  float cm = getsensorDistance(mV); // the distance calculated with the sensor
+  float cm = getsensorDistance(mV) - 13; // the distance calculated with the sensor with offset
 
   return cm;
 }
