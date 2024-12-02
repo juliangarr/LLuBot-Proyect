@@ -38,8 +38,8 @@ float getsensorDistance(int mV) {
    if (mV > mVinterval * tableEntries - 1) {
 
       // To check the correct distance calculations, uncomment the following two code lines:
-      Serial.print("distancia predefinida:");
-      Serial.println(sensorDistance[tableEntries - 1]);
+      //Serial.print("distancia predefinida:");
+      //Serial.println(sensorDistance[tableEntries - 1]);
 
       return sensorDistance[tableEntries - 1];
    }
@@ -48,6 +48,7 @@ float getsensorDistance(int mV) {
       float frac = (mV % 100) / (float)mVinterval; // 100 mV for the interval, but in integer
       
       // To check the correct distance calculations, uncomment the following 15 code lines:
+      /*
       Serial.print(index);
       Serial.print("=");
       Serial.print(mV);
@@ -63,7 +64,7 @@ float getsensorDistance(int mV) {
       Serial.print(frac);
       Serial.print(")=");
       Serial.println(sensorDistance[index] - ((sensorDistance[index] - sensorDistance[index + 1]) * frac));
-
+      */
       return sensorDistance[index] - ((sensorDistance[index] - sensorDistance[index + 1]) * frac);
    }
 }
@@ -75,7 +76,7 @@ float getsensorDistance(int mV) {
 
 //------------------------------ SPECIAL FUNCTIONS FOR DIDACTIC USE -------------------------------------------------------//
 
-// FUNCTION 7: SEE STRAIGHT: ----------------------------------------------------------------------------------------------//
+// FUNCTION 6: SEE STRAIGHT: ----------------------------------------------------------------------------------------------//
 float seeStraight() {
 
   // First the variables are created:

@@ -1,6 +1,4 @@
-
 // FUNCTION 1: WAYS TO MOVE THE LLUBOT GIVEN NUMBER OF MICROSTEPS: --------------------------------------------------------//
-
 void movement (char way, float steps) { // function with two entries and no return
 
   // First you read the option you are given:

@@ -8,7 +8,7 @@
 #include <ESP8266WiFi.h>
 #include <DMotor_mod.h>
 #include <Servo_ESP8266.h>
-#include <String.h>
+//#include <String.h>
 
 // Connection's data:
 #define ledPin D0 //D0 for Wemos D1 R2// D2 for Wemos D1 R1  // for the low battery warning
@@ -53,10 +53,16 @@ const int mVinterval  = 100;  // value of the intervals in milivolts
 static float sensorDistance[tableEntries] = {80.0,70.0,60.0,50.0,40.0,30.0,25.0,20.0,15.0,10.0};
 
 // Enter your Wi-Fi username and password:
-const char* ssid = "WiFi4LLUBots";         // depending on your Wi-Fi connection
-const char* password = "LLUBotitos"; // it is not recommended to use this password
+//const char* ssid = "WiFi4LLUBots";         // depending on your Wi-Fi connection
+//const char* password = "LLUBotitos"; // it is not recommended to use this password
 //const char* ssid = "MiFibra-6376";         // depending on your Wi-Fi connection
 //const char* password = "q56swJWi"; // it is not recommended to use this password
+
+//const char* ssid = "Julian";         // depending on your Wi-Fi connection
+//const char* password = "contrasena"; // it is not recommended to use this password
+
+const char* ssid = "ESP32_AP";
+const char* password = "pwordLlubot";
 
 // Initialize the web server on port 80:
 WiFiServer server(80);
@@ -66,7 +72,6 @@ int actividadSel = 0;         // for the displayed server selection
 int value = 0;                // resource for the correct functioning of the previous
 int movA1 = 0;                // resource for activity 1
 String movA2 = "0";                // resource for activity 2
-
 
 void mostrarTraza(WiFiClient& client){
   client.println("<h2>Trajectory</h2>");

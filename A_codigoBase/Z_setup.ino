@@ -1,5 +1,7 @@
 //***********************************CONFIGURACIÓN*************************************************
 
+// Se debe llamar a la función tipo "SU" que se desee
+
 void setup() {
   Serial.begin(115200);
   delay(10);

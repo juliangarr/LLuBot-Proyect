@@ -1,6 +1,18 @@
+//*********************************** BUCLE PRINCIPAL *************************************************
+
+// Se debe llamar a la función tipo "LOOP" que se desee
+
+
+// Variables para el control del tiempo
+unsigned long currentTime = millis();
+unsigned long previousTime = 0;
+const long timeoutTime = 2000;
 
 void loop() {
-  
+  controlRemoto();
+}
+
+void LOOP_original_predeterminado(){
   // First read the voltage value for the correct functioning of the LLUBot.
   digitalWrite(ledPin, LOW);
   sensorVal=1;//digitalRead(voltagePin);
@@ -18,19 +30,19 @@ void loop() {
     switch (actividadSel){
       case 1:
         Serial.println("Hey, entré en la actividad 1");
-        juegoRoomba();
+        //juegoRoomba();
         Serial.println("Hey, salí de la actividad 1");
         break;
       case 2:
         Serial.println("Hey, entré en la actividad 2");
-        maths();
+        //maths();
         Serial.println("Hey, salí de la actividad 2");
         break;
       default:
         Serial.println("Hey, estoy en el menú principal");
-        principalMenu();
+        //principalMenu();
         Serial.println("Hey, me voy del menú principal");
         break;
     }
   }
-}  // FINITE INCANTATEM
+}
