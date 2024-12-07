@@ -1,4 +1,4 @@
-#include "comunicaciones.h"
+#include "C_comunicaciones.h"
 
 IPAddress staticIP_AP(192,168,4,90);
 IPAddress staticIP_llubot2(192,168,4,95);
@@ -12,8 +12,8 @@ uint8_t MAC_llubot_3[] = {0x18, 0xFE, 0x34, 0x9D, 0xAD, 0xDE};
 struct_emisor s_emisor;
 
 void init_wifi(int llubot){
-  //const char* ssid = "ESP32_AP";
-  //const char* password = "pwordLlubot";
+  const char* ssid = "ESP32_AP";          // TODO: Revisar como hacer para que estas variables sean globales y se reciban como parámetro
+  const char* password = "pwordLlubot";
 
   // Configuración de IP estática para el punto de acceso (AP) y estaciones (STA)
   IPAddress gateway(192,168,4,1);   // Dirección del gateway del AP

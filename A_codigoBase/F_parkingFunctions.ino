@@ -27,7 +27,7 @@ float scannerLlubot(float ancho = 20){
       // Para cada angulo en el que la anchura sea mayor que la mitad de la anchura del LLUBot (el LLUBot de momento puede pasar), se calcula el la distancia frontal (cateto adyacente)
       // Calculamos la distancia a la que se encuentra el objeto 
       if ( anchura > ancho2 ) {
-        largos[(i-minDegFront)/10] = cos(angulo)*readCm;
+        cosenos[(i-minDegFront)/10] = cos(angulo)*readCm;
       }
       else{
         pasoLL = false;
@@ -42,7 +42,7 @@ float scannerLlubot(float ancho = 20){
       Serial.print(" Anchura: ");
       Serial.println(anchura);
       Serial.print(" Largo: ");
-      Serial.println(largos[(i-minDegFront)/10]);
+      Serial.println(cosenos[(i-minDegFront)/10]);
     }
   }
 
@@ -51,9 +51,9 @@ float scannerLlubot(float ancho = 20){
     // Usamos un filtro de mediana para eliminar los valores atipicos
     MedianFilter<float> medianFilter(10);
     for (int i=0; i<10; i++) {
-        if (largos[i] != -1) {
+        if (cosenos[i] != -1) {
             // Añadir un nuevo valor al filtro
-            medianFilter.AddValue(largos[i]);
+            medianFilter.AddValue(cosenos[i]);
         }
     }
 

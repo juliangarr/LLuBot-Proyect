@@ -1,16 +1,19 @@
 #include <math.h>
-#include "comunicaciones.h"
+#include "C_comunicaciones.h"
+
+int id_llubot = 1;
+bool initialize = false;
 
 void parkingLlubots() {
-  bool estacion = (id_llubot == 1)   // Variable para saber si el LLUBot es la estación
+  bool estacion = (id_llubot == 1);   // Variable para saber si el LLUBot es la estación
 
   if (initialize == false) {
     // Inicializar Wifi de los 3 llubots (segun el ID)
-    initWiFi(id_llubot);
+    init_wifi(id_llubot);
     Serial.println("Se ha inicializado el WIFI");
 
     // Inicializar ESPNow de los 3 llubots (segun el ID)
-    initESPNow(id_llubot);
+    init_esp_now(id_llubot);
     Serial.println("Se ha inicializado la comunicacion por ESPNow");
     
     initialize = true;
@@ -45,9 +48,8 @@ void parkingLlubots() {
       enviar_datos(3, mensaje);
     }
   }
-
-  // CODIGO PARA LLUBOT ESCLAVO (Receptor/Estático)
-  else{
+  
+  else{ // CODIGO PARA LLUBOT ESCLAVO (Receptor/Estático)
     //PASO 1: Recibir mensaje del LLUBot Estación (se supone que con callback)
     // Recibir_datos_del_emisor(); no necesario en principio
 

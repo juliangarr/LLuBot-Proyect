@@ -7,6 +7,8 @@ unsigned long currentTime = millis();
 unsigned long previousTime = 0;
 const long timeoutTime = 2000;
 
+int iteraciones = 1;  // Variable global para contar las iteraciones del parking de LluBots
+
 void loop() {
   LOOP_parkingLlubots();
 }
@@ -34,6 +36,7 @@ void LOOP_parkingLlubots(){
         Serial.print("Iteración NÚMERO ---- : ");
         Serial.print(iteraciones);
         Serial.println(" ---- completada.");
+        iteraciones++;
         break;
       default:
         Serial.println("Hey, estoy en el CONTROL REMOTO");

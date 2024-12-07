@@ -2,12 +2,11 @@
 
 // Se debe llamar a la función tipo "SU" que se desee
 
-// VARIABLE QUE CONTROLA EL ID DEL LLUBOT
-int id_llubot = 1; // Cambiar el ID según el LLUBot
+// VARIABLE QUE CONTROLA EL ID DEL LLUBOT -> Declarada en F_start.ino
+//int id_llubot = 1; // Cambiar el ID según el LLUBot
 
-// VARIABLES PARA EL CONTROL DEL PARKING DE LLUBOTS
-int iteraciones = 0;  // Variable global para contar las iteraciones del parking de LluBots
-bool initialize = false;  // Variable global para inicializar el WiFi y ESPNow (solo primera iteración)
+// VARIABLES PARA EL CONTROL DEL PARKING DE LLUBOTS -> Declarada en F_start.ino
+// bool initialize = false;  // Variable global para inicializar el WiFi y ESPNow (solo primera iteración)
 
 void setup() {
   //----------------------------------------------------------------------------------------------

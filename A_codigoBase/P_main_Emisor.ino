@@ -1,4 +1,4 @@
-#include "comunicaciones.h"
+#include "C_comunicaciones.h"
 #include <ESP8266WiFi.h>
 
 void SU_main_Emisor() {
@@ -10,9 +10,12 @@ void SU_main_Emisor() {
 }
 
 void LOOP_main_Emisor() {
+  // Comentado para compilacion
+  /*
     struct_emisor data = {23.5, 45.2, 1};   
     
     enviar_datos(3, data);
     
     delay(5000);
+    */
 }
