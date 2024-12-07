@@ -1,25 +1,23 @@
-// VARIABLES
+// VARIABLES PARA EL CONTROL REMOTO
 int angle1 = 0;
-int angle2 = 180;
+int angle2 = 0;
 int cmAv = 0;
 int cmRe = 0;
 int movimiento = 0;
+
+// FUNCTION DEMO (Debugging):
 int veces_demo = 0;
 
-bool estacion = 1;
-
-
-// FUNCTION DEMO:
 void demo(){
   veces_demo++;
   Serial.print("Hola soy Demo : -----  ");
   Serial.println(veces_demo);
 }
 
-// FUNCTION 10: MENÚ PRINCIPAL: ------------------------------------------------------------------------------------------//
+// FUNCTION 10: CONTROL REMOTO - Menú Inicial LluBots: ------------------------------------------------------------------------------------------//
 void controlRemoto(){
 
-  // Stay within the principal menu until the order is told
+  // Stay within the Remote Control until the order is told
   while (actividadSel == 0) {
 
     // --------------------- CHECK WIFI -----------------------------
@@ -147,8 +145,8 @@ void controlRemoto(){
           <input type='submit' value='Enviar retroceso' class='button-green'>\
         </form>");
 
-        // Añade el nuevo botón si el booleano es verdadero
-        if (estacion) {
+        // Añade el nuevo botón en el Server del LLuBot Estacion
+        if (id_llubot == 1) {
           client.println("        <form action=\"/SA\" method=\"get\">\
               <input type='submit' value='START Demo' class='button-green'>\
             </form>");
@@ -164,17 +162,19 @@ void controlRemoto(){
 
     //**************ÓRDENES RECIBIDAS**********************//  
     /*
-    actividadSel=value;
+    actividadSel=value;   // esto es del codigo anterior, debería ser distinto para usarlo en nuestro codigo
     Serial.println("Actividad actual: 0");
     Serial.print("Actividad seleccionada: ");
     Serial.println(actividadSel);
     */
+
+    // Bool para intentar evitar solicitudes dobles (Checkear si es realmente necesario)
     bool solicitudProcesada = false;
 
     // Dentro del ciclo principal de cliente
     if (!solicitudProcesada) {
       solicitudProcesada = true;
-      movimiento = value;
+      movimiento = value;         // Creo que movimiento no es necesario
       switch(movimiento){
         case 0:
           turn('R', angle1);
@@ -191,11 +191,21 @@ void controlRemoto(){
         case 3:
           goStraight('B', cmRe);
           break;
+          
         case 4:
+          actividadSel = 1;
+        
+        /*  
+        case 4:   // Caso para debuggear con Demo y ver si la solicitud se envia más de una vez (Santi sabe)
           demo();
           break;
-        case 5:
+        */
+
+        case 5:   // Caso para evitar que si se procesan solicitudes dobles, al poner value a 5 a continuación, no haga efecto.
+                  // Creo que es INUTIL porque lo que ocurre es que se procesa la orden de request y la de fo... y entonces vuelve a setear "value" a un valor distinto de 5
+                  // Lo que hay que hacer es EVITAR PROCESAR LA SOLICITUD "F...."
           break;
+
         default:
           Serial.println("ERROR en SWITCH movimiento");
       }

@@ -1,4 +1,5 @@
 // FUNCTION 4: DISTANCE READING: ------------------------------------------------------------------------------------------//
+// Modificada para incluir delay mas largo también en el ángulo de 180º
 float sensorDistanceRead(float servoAngle_) { 
 
   // First you read the angle you are given and move the servo motor:
@@ -6,7 +7,7 @@ float sensorDistanceRead(float servoAngle_) {
   sensorServo.write(chosenServoAngle);
 
   // Then choose the delay for the required angle, for 0º, 90º and 180º, the required time is longer:
-  if ((chosenServoAngle == 90) || (chosenServoAngle == 0) || (chosenServoAngle == 45) || (chosenServoAngle == 135)) {
+  if ((chosenServoAngle == 90) || (chosenServoAngle == 0) || (chosenServoAngle == 45) || (chosenServoAngle == 135) || (chosenServoAngle == 180)) {
     delay(500); // servo movement large pause
   }
   else {
@@ -19,7 +20,7 @@ float sensorDistanceRead(float servoAngle_) {
   float val = analogRead(sensorPin);
   
   // Then choose the delay for the required angle, for 0º, 90º and 180º, the required time is longer:
-  if ((chosenServoAngle == 90) || (chosenServoAngle == 0) || (chosenServoAngle == 45) || (chosenServoAngle == 135)) {
+  if ((chosenServoAngle == 90) || (chosenServoAngle == 0) || (chosenServoAngle == 45) || (chosenServoAngle == 135) || (chosenServoAngle == 180)) {
     delay(500); // sensor reading large pause
   }
   else {

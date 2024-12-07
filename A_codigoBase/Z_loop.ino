@@ -2,14 +2,45 @@
 
 // Se debe llamar a la función tipo "LOOP" que se desee
 
-
 // Variables para el control del tiempo
 unsigned long currentTime = millis();
 unsigned long previousTime = 0;
 const long timeoutTime = 2000;
 
 void loop() {
-  controlRemoto();
+  LOOP_parkingLlubots();
+}
+
+void LOOP_parkingLlubots(){
+  // First read the voltage value for the correct functioning of the LLUBot.
+  digitalWrite(ledPin, LOW);
+  sensorVal=1;//digitalRead(voltagePin);
+              // La batería se pone a 1 para ejecutar el código si o si pero debería comprobarse
+
+  // Si NO tenemos suficiente batería:
+  if (sensorVal == 0){
+    // Turn on the warning LED and show the Low Battery Server:
+    digitalWrite(ledPin, HIGH);
+    lowBatteryServer();
+  }
+  
+  // Si SÍ tenemos suficiente batería:
+  else {
+    delay(100);
+    switch (actividadSel){
+      case 1:
+        Serial.println("Hey, entré en MODO PARKING LLUBOTS");
+        parkingLlubots();
+        Serial.print("Iteración NÚMERO ---- : ");
+        Serial.print(iteraciones);
+        Serial.println(" ---- completada.");
+        break;
+      default:
+        Serial.println("Hey, estoy en el CONTROL REMOTO");
+        controlRemoto();
+        break;
+    }
+  }
 }
 
 void LOOP_original_predeterminado(){
