@@ -5,6 +5,7 @@
 Hay 4 clases de fichero:
 - A: Archivos reutilizados del código previo. Incluyen el código para inicializar y mover el LLU-Bot.
 - C: Archivos correspondientes a la parte de COMUNICACIÓN entre LLU-Bots (ESP8266).
+- F: Archivos de FUNCIONES. Implementan fucionalidades propias como por ejemplo el Parking de LLuBots o las medidas de distancia requeridas.
 - P: Archivos para realizar pruebas de los distintos módulos (comunicación, movimiento, sensorización, etc.)
 - S: Archivos correspondientes al SERVIDOR WEB y al CONTROL REMOTO de los LLU-Bots.
 - Z: Archivos correspondientes a las funciones de setup y loop propias de arduino.
